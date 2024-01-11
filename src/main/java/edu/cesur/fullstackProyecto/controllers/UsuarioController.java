@@ -25,6 +25,12 @@ public class UsuarioController {
 	@PostMapping("/registrar")
 	ResponseEntity<?> crearUsuario(@RequestBody UsuarioDTO usuarioDTO){
 		UsuarioDTO usuario = usuarioService.crearUsuario(usuarioDTO);
+		
+		
+		//DEBUG
+		System.out.println("Usuario Controller "+usuario.toString());
+		//DEBUG
+		
 		URI location = ServletUriComponentsBuilder
 				.fromCurrentRequest()
 				.path("/" + usuario.getId())
@@ -43,6 +49,13 @@ public class UsuarioController {
 		if(usuarios.isEmpty()) {
 			return ResponseEntity.noContent().build();			
 		}
+		
+		
+		//DEBUG
+		for (UsuarioDTO usuario: usuarios) {
+			System.out.println(usuario.toString());
+		}
+		//DEBUG
 		
 		return ResponseEntity.ok(usuarios);
 		

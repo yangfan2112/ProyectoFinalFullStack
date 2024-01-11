@@ -19,7 +19,11 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 	@Override
 	public UsuarioDTO crearUsuario(UsuarioDTO usuarioDTO) {
-		System.out.println(usuarioDTO.toString());
+		
+		//DEBUG	
+		System.out.println("Usuario Service "+ usuarioDTO.toString()+"\n"+usuarioMapper.toEntity(usuarioDTO).toString());
+		//DEBUG	
+		System.out.println();
 		return usuarioMapper.toDTO(usuarioRepository.save(usuarioMapper.toEntity(usuarioDTO)));
 	}
 
