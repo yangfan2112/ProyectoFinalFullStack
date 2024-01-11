@@ -53,4 +53,96 @@ public class UsuarioEntity {
 	}
 	//DEBUG
 
+
+	public Long getId() {
+		return id;
+	}
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+	public String getNombre() {
+		return nombre;
+	}
+
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+
+	public String getApellidos() {
+		return apellidos;
+	}
+
+
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
+	}
+
+
+	public String getDocumentacion() {
+		return documentacion;
+	}
+
+
+	public void setDocumentacion(String documentacion) {
+		this.documentacion = documentacion;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public Date getFechanac() {
+		return fechanac;
+	}
+
+
+	public void setFechanac(Date fechanac) {
+		this.fechanac = fechanac;
+	}
+
+
+	public Date getFechareg() {
+		return fechareg;
+	}
+
+
+	public void setFechareg(Date fechareg) {
+		this.fechareg = fechareg;
+	}
+
+
+	public String getIdioma() {
+		return idioma;
+	}
+
+
+	public void setIdioma(String idioma) {
+		this.idioma = idioma;
+	}
+
+
+	public String getNacionalidad() {
+		return nacionalidad;
+	}
+
+
+	public void setNacionalidad(String nacionalidad) {
+		this.nacionalidad = nacionalidad;
+	}
+
+	
+	
 }

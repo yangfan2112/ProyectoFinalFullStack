@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import edu.cesur.fullstackProyecto.entities.UsuarioEntity;
 import edu.cesur.fullstackProyecto.model.UsuarioDTO;
 import edu.cesur.fullstackProyecto.services.UsuarioService;
 
@@ -23,18 +24,18 @@ public class UsuarioController {
 	UsuarioService usuarioService;
 	
 	@PostMapping("/registrar")
-	ResponseEntity<?> crearUsuario(@RequestBody UsuarioDTO usuarioDTO){
-		UsuarioDTO usuario = usuarioService.crearUsuario(usuarioDTO);
+	ResponseEntity<?> crearUsuario(@RequestBody UsuarioEntity usuarioEntity){
+		long id = usuarioService.crearUsuario(usuarioEntity);
 		
 		
 		//DEBUG
-		System.out.println("Usuario Controller "+usuario.toString());
+		System.out.println("Usuario Controller "+usuarioEntity.toString());
 		//DEBUG
 		
 		URI location = ServletUriComponentsBuilder
 				.fromCurrentRequest()
-				.path("/" + usuario.getId())
-				.buildAndExpand(usuario.getId())
+				.path("/" + id)
+				.buildAndExpand(id)
 				.toUri();
 		
 		return ResponseEntity.created(location).build();
