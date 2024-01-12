@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import edu.cesur.fullstackProyecto.entities.UsuarioEntity;
+import edu.cesur.fullstackProyecto.entities.Usuario;
 import edu.cesur.fullstackProyecto.mappers.UsuarioMapper;
 import edu.cesur.fullstackProyecto.model.UsuarioDTO;
 import edu.cesur.fullstackProyecto.repositories.UsuarioRepository;
@@ -15,22 +15,17 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 	@Autowired
 	UsuarioRepository usuarioRepository;
-	@Autowired
-	UsuarioMapper usuarioMapper;
 
 	@Override
-	public long crearUsuario(UsuarioEntity usuarioEntity) {
+	public long crearUsuario(Usuario usuarioEntity) {
 		
-		//DEBUG	
-		System.out.println(usuarioEntity.toString());
-		//DEBUG	
 		usuarioRepository.save(usuarioEntity);
 		return usuarioEntity.getId();
 	}
 
 	@Override
-	public List<UsuarioDTO> getUsuarios() {
-		return usuarioMapper.toDTOList(usuarioRepository.findAll());
+	public List<Usuario> getUsuarios() {
+		return usuarioRepository.findAll();
 	}
 
 }
