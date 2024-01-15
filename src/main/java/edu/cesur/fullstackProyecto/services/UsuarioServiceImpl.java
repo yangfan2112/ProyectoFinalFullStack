@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.cesur.fullstackProyecto.entities.Usuario;
-import edu.cesur.fullstackProyecto.mappers.UsuarioMapper;
-import edu.cesur.fullstackProyecto.model.UsuarioDTO;
 import edu.cesur.fullstackProyecto.repositories.UsuarioRepository;
 
 @Service

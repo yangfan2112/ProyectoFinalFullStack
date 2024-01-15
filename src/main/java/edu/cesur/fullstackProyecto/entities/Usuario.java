@@ -2,15 +2,17 @@ package edu.cesur.fullstackProyecto.entities;
 
 import java.sql.Date;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 
 
 @Entity
-@Table(name = "usuarios")
+@Table(name = "usuarios", uniqueConstraints = {@UniqueConstraint(columnNames = {"documentacion","email"})})
 public class Usuario {
 
 	@Id
@@ -18,7 +20,9 @@ public class Usuario {
 	private Long id;
 	private String nombre;
 	private String apellidos;
+	@Column(unique=true)
 	private String documentacion;
+	@Column(unique=true)
 	private String email;
 	private Date fechanac;
 	private Date fechareg = new Date(System.currentTimeMillis());
