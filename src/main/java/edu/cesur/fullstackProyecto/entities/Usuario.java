@@ -2,6 +2,7 @@ package edu.cesur.fullstackProyecto.entities;
 
 import java.sql.Date;
 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,34 +19,46 @@ public class Usuario {
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
+    @Column(nullable = false)
 	private String nombre;
+    @Column(nullable = false)
 	private String apellidos;
-	@Column(unique=true)
+	@Column(nullable = false, unique=true)
 	private String documentacion;
-	@Column(unique=true)
+	@Column(nullable = false, unique=true)
 	private String email;
+	@Column(nullable = false, unique=true)
+	private String tlf;
+    @Column(nullable = false)
 	private Date fechanac;
 	private Date fechareg = new Date(System.currentTimeMillis());
+    @Column(nullable = false)
 	private String idioma;
+    @Column(nullable = false)
 	private String nacionalidad;
 	
 	
 	public Usuario(){}
 	
 	
-	public Usuario(Long id, String nombre, String apellidos, String documentacion, String email, Date fechanac,
-			Date fechareg, String idioma, String nacionalidad) {
+
+
+	public Usuario(Long id, String nombre, String apellidos, String documentacion, String email, String tlf,
+			Date fechanac, Date fechareg, String idioma, String nacionalidad) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.documentacion = documentacion;
 		this.email = email;
+		this.tlf = tlf;
 		this.fechanac = fechanac;
 		this.fechareg = fechareg;
 		this.idioma = idioma;
 		this.nacionalidad = nacionalidad;
 	}
+
+
 
 
 	//DEBUG
@@ -58,9 +71,25 @@ public class Usuario {
 	//DEBUG
 
 
+	
+	
+	
 	public Long getId() {
 		return id;
 	}
+
+
+	public String getTlf() {
+		return tlf;
+	}
+	
+
+
+	public void setTlf(String tlf) {
+		this.tlf = tlf;
+	}
+
+
 
 
 	public void setId(Long id) {
