@@ -3,6 +3,8 @@ package edu.cesur.fullstackProyecto.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
 import edu.cesur.fullstackProyecto.entities.Usuario;
@@ -24,6 +26,24 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Override
 	public List<Usuario> getUsuarios() {
 		return usuarioRepository.findAll();
+	}
+
+	@Override
+	public List<Usuario> getUsuariosby(String campo, String valor) {
+		
+        switch(campo) {
+        case "documentacion":
+        	return usuarioRepository.buscarPorDocumentacion(valor);
+        case "email":
+        	return usuarioRepository.buscarPorEmail(valor);
+        case "tlf":
+        	return usuarioRepository.buscarPorTlf(valor);
+        case "idioma":
+        	return usuarioRepository.buscarPorIdioma(valor);
+        case "nacionalidad":
+        	return usuarioRepository.buscarPorNacionalidad(valor);
+        }
+        return null;
 	}
 
 }
