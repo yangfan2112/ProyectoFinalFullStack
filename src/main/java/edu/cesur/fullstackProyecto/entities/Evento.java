@@ -12,50 +12,54 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
+
 @Entity
-@Table(name = "usuarios")
-public class Usuario {
+@Table(name = "eventos")
+public class Evento{
 
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
     @Column(nullable = false)
 	private String nombre;
-    @Column(nullable = false)
-	private String apellidos;
-	@Column(nullable = false, unique=true)
-	private String documentacion;
+	@Column(nullable = false)
+	private String empresa;
 	@Column(nullable = false, unique=true)
 	private String email;
 	@Column(nullable = false, unique=true)
 	private String tlf;
     @Column(nullable = false)
-	private Date fechanac;
+	private Date fechaini;
+    private Date fechafin;
 	private Date fechareg = new Date(System.currentTimeMillis());
     @Column(nullable = false)
-	private String idioma;
+	private String ubicacion;
     @Column(nullable = false)
-	private String nacionalidad;
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+	private String pais;
+    @OneToMany(mappedBy = "evento", cascade = CascadeType.ALL)
     private List<Resena> resenas;
+    @Column(nullable = false)
+	private String valoracion;
+    @Column(unique = true)
+    private String url;
 	
 	
-	public Usuario(){}
+	public Evento(){}
 
 
-	public Usuario(Long id, String nombre, String apellidos, String documentacion, String email, String tlf,
-			Date fechanac, Date fechareg, String idioma, String nacionalidad, List<Resena> resenas) {
+	public Evento(Long id, String nombre, String empresa, String email, String tlf, Date fechaini, Date fechafin,
+			Date fechareg, String ubicacion, String pais, List<Resena> resenas) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
-		this.apellidos = apellidos;
-		this.documentacion = documentacion;
+		this.empresa = empresa;
 		this.email = email;
 		this.tlf = tlf;
-		this.fechanac = fechanac;
+		this.fechaini = fechaini;
+		this.fechafin = fechafin;
 		this.fechareg = fechareg;
-		this.idioma = idioma;
-		this.nacionalidad = nacionalidad;
+		this.ubicacion = ubicacion;
+		this.pais = pais;
 		this.resenas = resenas;
 	}
 
@@ -80,23 +84,13 @@ public class Usuario {
 	}
 
 
-	public String getApellidos() {
-		return apellidos;
+	public String getEmpresa() {
+		return empresa;
 	}
 
 
-	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
-	}
-
-
-	public String getDocumentacion() {
-		return documentacion;
-	}
-
-
-	public void setDocumentacion(String documentacion) {
-		this.documentacion = documentacion;
+	public void setEmpresa(String empresa) {
+		this.empresa = empresa;
 	}
 
 
@@ -120,13 +114,23 @@ public class Usuario {
 	}
 
 
-	public Date getFechanac() {
-		return fechanac;
+	public Date getFechaini() {
+		return fechaini;
 	}
 
 
-	public void setFechanac(Date fechanac) {
-		this.fechanac = fechanac;
+	public void setFechaini(Date fechaini) {
+		this.fechaini = fechaini;
+	}
+
+
+	public Date getFechafin() {
+		return fechafin;
+	}
+
+
+	public void setFechafin(Date fechafin) {
+		this.fechafin = fechafin;
 	}
 
 
@@ -140,23 +144,23 @@ public class Usuario {
 	}
 
 
-	public String getIdioma() {
-		return idioma;
+	public String getUbicacion() {
+		return ubicacion;
 	}
 
 
-	public void setIdioma(String idioma) {
-		this.idioma = idioma;
+	public void setUbicacion(String ubicacion) {
+		this.ubicacion = ubicacion;
 	}
 
 
-	public String getNacionalidad() {
-		return nacionalidad;
+	public String getPais() {
+		return pais;
 	}
 
 
-	public void setNacionalidad(String nacionalidad) {
-		this.nacionalidad = nacionalidad;
+	public void setPais(String pais) {
+		this.pais = pais;
 	}
 
 
@@ -169,6 +173,11 @@ public class Usuario {
 		this.resenas = resenas;
 	}
 
+	
+	
 
+
+	
+	
 	
 }

@@ -31,6 +31,7 @@ public class Hotel {
 	private Date fechareg = new Date(System.currentTimeMillis());
     @Column(nullable = false, unique=true)
 	private String tlf;
+    
 	public Hotel() {
 		super();
 		// TODO Auto-generated constructor stub

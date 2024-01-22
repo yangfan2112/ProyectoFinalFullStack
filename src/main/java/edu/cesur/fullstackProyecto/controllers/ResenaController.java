@@ -14,19 +14,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import edu.cesur.fullstackProyecto.entities.Usuario;
-import edu.cesur.fullstackProyecto.services.UsuarioService;
+import edu.cesur.fullstackProyecto.dtos.ResenaDto;
+import edu.cesur.fullstackProyecto.entities.Resena;
+import edu.cesur.fullstackProyecto.services.ResenaService;
 
 @RestController
-@RequestMapping("/usuarios")
-public class UsuarioController {
+@RequestMapping("/resenas")
+public class ResenaController {
 	
 	@Autowired
-	UsuarioService usuarioService;
+	ResenaService resenaService;
 	
-	@PostMapping("/registrar")
-	ResponseEntity<?> crearUsuario(@RequestBody Usuario usuarioEntity){
-		long id = usuarioService.crearUsuario(usuarioEntity);
+	@PostMapping("/publicar")
+	ResponseEntity<?> crearResena(@RequestBody ResenaDto resenaDto){
+		long id = resenaService.crearResena(resenaDto);
 		
 		URI location = ServletUriComponentsBuilder
 				.fromCurrentRequest()
@@ -40,28 +41,28 @@ public class UsuarioController {
 	}
 	
 	@GetMapping
-	ResponseEntity<?> getUsuarios(){
+	ResponseEntity<?> getResenas(){
 		
-		List<Usuario> usuarios = usuarioService.getUsuarios();
-		if(usuarios.isEmpty()) {
+		List<Resena> resenas = resenaService.getResenas();
+		if(resenas.isEmpty()) {
 			return ResponseEntity.noContent().build();			
 		}
 		
 		
-		return ResponseEntity.ok(usuarios);
+		return ResponseEntity.ok(resenas);
 		
 	}
 	
-	@GetMapping("/filtro")
-	ResponseEntity<?> getUsuariosBy(Usuario usuario){
-		List<Usuario> usuarios = null;
+	@GetMapping("/filtros")
+	ResponseEntity<?> getResenasBy(@RequestParam String campo, @RequestParam Long valor){
+		List<Resena> resenas = null;
 		try {
-			usuarios = (List<Usuario>) usuarioService.getUsuariosby(campo, valor);
+			resenas = resenaService.getResenasby(campo, valor);
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException
 				| SecurityException e) {
 			e.printStackTrace();
 		}
-		return ResponseEntity.ok(usuarios);
+		return ResponseEntity.ok(resenas);
 		
 	}
 

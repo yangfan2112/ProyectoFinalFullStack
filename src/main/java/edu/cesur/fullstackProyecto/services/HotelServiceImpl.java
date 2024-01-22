@@ -16,14 +16,12 @@ public class HotelServiceImpl implements HotelService{
 	
 	@Override
 	public long crearHotel(Hotel hotelEntity) {
-		// TODO Auto-generated method stub
 		hotelRepository.save(hotelEntity);
 		return hotelEntity.getId();
 	}
 
 	@Override
 	public List<Hotel> getHoteles() {
-		// TODO Auto-generated method stub
 		return hotelRepository.findAll();
 	}
 

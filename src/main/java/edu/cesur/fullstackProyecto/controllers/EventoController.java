@@ -14,19 +14,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import edu.cesur.fullstackProyecto.entities.Usuario;
-import edu.cesur.fullstackProyecto.services.UsuarioService;
+import edu.cesur.fullstackProyecto.entities.Evento;
+import edu.cesur.fullstackProyecto.services.EventoService;
 
 @RestController
-@RequestMapping("/usuarios")
-public class UsuarioController {
+@RequestMapping("/eventos")
+public class EventoController {
 	
 	@Autowired
-	UsuarioService usuarioService;
+	EventoService eventoService;
 	
 	@PostMapping("/registrar")
-	ResponseEntity<?> crearUsuario(@RequestBody Usuario usuarioEntity){
-		long id = usuarioService.crearUsuario(usuarioEntity);
+	ResponseEntity<?> crearEvento(@RequestBody Evento evento){
+		long id = eventoService.crearEvento(evento);
 		
 		URI location = ServletUriComponentsBuilder
 				.fromCurrentRequest()
@@ -40,28 +40,28 @@ public class UsuarioController {
 	}
 	
 	@GetMapping
-	ResponseEntity<?> getUsuarios(){
+	ResponseEntity<?> getEventos(){
 		
-		List<Usuario> usuarios = usuarioService.getUsuarios();
-		if(usuarios.isEmpty()) {
+		List<Evento> eventos = eventoService.getEventos();
+		if(eventos.isEmpty()) {
 			return ResponseEntity.noContent().build();			
 		}
 		
 		
-		return ResponseEntity.ok(usuarios);
+		return ResponseEntity.ok(eventos);
 		
 	}
 	
-	@GetMapping("/filtro")
-	ResponseEntity<?> getUsuariosBy(Usuario usuario){
-		List<Usuario> usuarios = null;
+	@GetMapping("/filtros")
+	ResponseEntity<?> getEventosBy(@RequestParam String campo, @RequestParam String valor){
+		List<Evento> eventos = null;
 		try {
-			usuarios = (List<Usuario>) usuarioService.getUsuariosby(campo, valor);
+			eventos = (List<Evento>) eventoService.getEventosby(campo, valor);
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException
 				| SecurityException e) {
 			e.printStackTrace();
 		}
-		return ResponseEntity.ok(usuarios);
+		return ResponseEntity.ok(eventos);
 		
 	}
 

@@ -9,6 +9,6 @@ public interface UsuarioService {
 	
 	long crearUsuario(Usuario usuarioEntity);
 	List<Usuario> getUsuarios();
-	List<Usuario> getUsuariosby(String campo, String valor) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException;
+	Object getUsuariosby(String campo, String valor) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException;
 
 }

@@ -14,14 +14,13 @@ public class ExeptionHandler extends org.springframework.web.servlet.mvc.method.
 
     @ExceptionHandler(org.springframework.dao.DataIntegrityViolationException.class)
     public ResponseEntity<Object> handleDataIntegrityViolationException(org.springframework.dao.DataIntegrityViolationException ex) {
-
         String exceptionMessage = ex.getMessage();
-        Pattern pattern = Pattern.compile("^not-null (property references) a null or transient value : .+\\.([^\\s]+)$");
-        Matcher matcher = pattern.matcher(exceptionMessage);
+        Pattern notnullPattern = Pattern.compile("^not-null (property references) a null or transient value : .+\\.([^\\s]+)$");
+        Matcher notnullMatcher = notnullPattern.matcher(exceptionMessage);
 
         String errorMessage = "Se ha producido un error en la base de datos";
-        if (matcher.matches()) {
-            String data = matcher.group(2);
+        if (notnullMatcher.matches()) {
+            String data = notnullMatcher.group(2);
             
             Map<String, String> values = new HashMap<>() {{
                 put("nombre", " nombre");
@@ -31,7 +30,12 @@ public class ExeptionHandler extends org.springframework.web.servlet.mvc.method.
                 put("tlf", " número de teléfono");
                 put("fechanac", "a fecha de nacimiento");
                 put("idioma", "idioma preferido");
-                put("nacionalidad", "a nacionalidad"); 
+                put("nacionalidad", "a nacionalidad");
+                put("empresa", "a empresa");
+                put("ubicacion", "a ubicación");
+                put("fechaini", "a fecha de inicio");
+                put("pais", " pais ");
+                put("servicios", "servicio");
             }};
             
             errorMessage = "No se ha introducido ningún" + values.get(data);
@@ -40,19 +44,24 @@ public class ExeptionHandler extends org.springframework.web.servlet.mvc.method.
         } else if (exceptionMessage.contains("Ya existe la llave")) {
             Pattern llavePattern = Pattern.compile("Ya existe la llave \\(([^)]+)\\)=\\(([^)]+)\\)");
             Matcher llaveMatcher = llavePattern.matcher(exceptionMessage);
+            
+            Pattern insertPattern = Pattern.compile("insert into\\s+(\\w+)");
+            Matcher insertMatcher = insertPattern.matcher(exceptionMessage);
 
-            if (llaveMatcher.find()) {
-                String column = llaveMatcher.group(1);
-                String data = llaveMatcher.group(2);
+            if (llaveMatcher.find() && insertMatcher.find()) {
+                String columna = llaveMatcher.group(1);
+                String valor = llaveMatcher.group(2);
+                String tabla = insertMatcher.group(1);
                 
                 Map<String, String> values = new HashMap<>() {{
                     put("documentacion", "el documento ");
                     put("email", "el correo ");
                     put("tlf", "el número de teléfono ");
-                    put("documentacion, email", "el documento y el correo ");
                 }};
 
-                errorMessage = "Ya existe un usuario registrado con " + values.get(column) + data;
+                errorMessage = "Ya existe un " + tabla.substring(0, tabla.length() - 1) + " registrado con " + values.get(columna) + valor;
+            } else {
+            	errorMessage = "ERROR";
             }
         }
 
