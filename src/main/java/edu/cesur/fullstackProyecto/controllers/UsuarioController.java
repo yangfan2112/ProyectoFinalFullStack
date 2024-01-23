@@ -1,8 +1,8 @@
 package edu.cesur.fullstackProyecto.controllers;
 
-import java.lang.reflect.InvocationTargetException;
 import java.net.URI;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -10,11 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import edu.cesur.fullstackProyecto.dtos.FiltroDTO;
 import edu.cesur.fullstackProyecto.entities.Usuario;
 import edu.cesur.fullstackProyecto.services.UsuarioService;
 
@@ -54,9 +52,9 @@ public class UsuarioController {
 	}
 	
 	@GetMapping("/filtro")
-	ResponseEntity<?> getUsuariosBy(@RequestBody List<FiltroDTO> filtroDTO){
-
-		return ResponseEntity.ok(usuarioService.getUsuariosby(filtroDTO));
+	ResponseEntity<?> getUsuariosBy(@RequestBody Map<String, String> filtros){
+		
+		return ResponseEntity.ok(usuarioService.getUsuariosby(filtros));
 		
 	}
 

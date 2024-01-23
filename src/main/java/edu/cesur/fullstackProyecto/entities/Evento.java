@@ -36,8 +36,6 @@ public class Evento{
 	private String ubicacion;
     @Column(nullable = false)
 	private String pais;
-    @OneToMany(mappedBy = "evento")
-    private List<Resena> resenas;
 	private Float valoracion;
     @Column(unique = true)
     private String url;
@@ -47,7 +45,7 @@ public class Evento{
 
 
 	public Evento(Long id, String nombre, String empresa, String email, String tlf, Date fechaini, Date fechafin,
-			Date fechareg, String ubicacion, String pais, List<Resena> resenas) {
+			Date fechareg, String ubicacion, String pais) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -59,18 +57,6 @@ public class Evento{
 		this.fechareg = fechareg;
 		this.ubicacion = ubicacion;
 		this.pais = pais;
-		this.resenas = resenas;
-	}
-
-	
-	
-
-	@Override
-	public String toString() {
-		return "Evento [id=" + id + ", nombre=" + nombre + ", empresa=" + empresa + ", email=" + email + ", tlf=" + tlf
-				+ ", fechaini=" + fechaini + ", fechafin=" + fechafin + ", fechareg=" + fechareg + ", ubicacion="
-				+ ubicacion + ", pais=" + pais + ", resenas=" + resenas + ", valoracion=" + valoracion + ", url=" + url
-				+ "]";
 	}
 
 
@@ -171,16 +157,6 @@ public class Evento{
 
 	public void setPais(String pais) {
 		this.pais = pais;
-	}
-
-
-	public List<Resena> getResenas() {
-		return resenas;
-	}
-
-
-	public void setResenas(List<Resena> resenas) {
-		this.resenas = resenas;
 	}
 
 

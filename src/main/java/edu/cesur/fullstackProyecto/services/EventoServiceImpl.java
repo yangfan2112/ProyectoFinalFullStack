@@ -31,7 +31,7 @@ public class EventoServiceImpl implements EventoService {
 		
         switch(campo) {
         case "id":
-        	return eventoRepository.buscarPorId(Long.parseLong(valor));
+        	return eventoRepository.findById(Long.parseLong(valor));
         case "empresa":
         	return eventoRepository.buscarPorEmpresa(valor);
         case "email":

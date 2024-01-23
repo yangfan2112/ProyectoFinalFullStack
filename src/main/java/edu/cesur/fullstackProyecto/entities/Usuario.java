@@ -36,15 +36,14 @@ public class Usuario {
 	private String idioma;
     @Column(nullable = false)
 	private String nacionalidad;
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private List<Resena> resenas;
+
 	
 	
 	public Usuario(){}
 
 
 	public Usuario(Long id, String nombre, String apellidos, String documentacion, String email, String tlf,
-			Date fechanac, Date fechareg, String idioma, String nacionalidad, List<Resena> resenas) {
+			Date fechanac, Date fechareg, String idioma, String nacionalidad) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -56,7 +55,6 @@ public class Usuario {
 		this.fechareg = fechareg;
 		this.idioma = idioma;
 		this.nacionalidad = nacionalidad;
-		this.resenas = resenas;
 	}
 
 
@@ -158,17 +156,6 @@ public class Usuario {
 	public void setNacionalidad(String nacionalidad) {
 		this.nacionalidad = nacionalidad;
 	}
-
-
-	public List<Resena> getResenas() {
-		return resenas;
-	}
-
-
-	public void setResenas(List<Resena> resenas) {
-		this.resenas = resenas;
-	}
-
 
 	
 }
