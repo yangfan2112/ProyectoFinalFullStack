@@ -36,10 +36,9 @@ public class Evento{
 	private String ubicacion;
     @Column(nullable = false)
 	private String pais;
-    @OneToMany(mappedBy = "evento", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "evento")
     private List<Resena> resenas;
-    @Column(nullable = false)
-	private String valoracion;
+	private Float valoracion;
     @Column(unique = true)
     private String url;
 	
@@ -61,6 +60,17 @@ public class Evento{
 		this.ubicacion = ubicacion;
 		this.pais = pais;
 		this.resenas = resenas;
+	}
+
+	
+	
+
+	@Override
+	public String toString() {
+		return "Evento [id=" + id + ", nombre=" + nombre + ", empresa=" + empresa + ", email=" + email + ", tlf=" + tlf
+				+ ", fechaini=" + fechaini + ", fechafin=" + fechafin + ", fechareg=" + fechareg + ", ubicacion="
+				+ ubicacion + ", pais=" + pais + ", resenas=" + resenas + ", valoracion=" + valoracion + ", url=" + url
+				+ "]";
 	}
 
 
@@ -171,6 +181,26 @@ public class Evento{
 
 	public void setResenas(List<Resena> resenas) {
 		this.resenas = resenas;
+	}
+
+
+	public Float getValoracion() {
+		return valoracion;
+	}
+
+
+	public void setValoracion(Float valoracion) {
+		this.valoracion = valoracion;
+	}
+
+
+	public String getUrl() {
+		return url;
+	}
+
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	

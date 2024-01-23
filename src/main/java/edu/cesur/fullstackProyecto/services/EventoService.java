@@ -10,5 +10,5 @@ public interface EventoService {
 	long crearEvento(Evento evento);
 	List<Evento> getEventos();
 	Object getEventosby(String campo, String valor) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException;
-
+	boolean actualizarValoracion(Long id);
 }

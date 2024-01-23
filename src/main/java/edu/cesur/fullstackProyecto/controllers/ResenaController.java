@@ -14,8 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import edu.cesur.fullstackProyecto.dtos.ResenaDto;
+import edu.cesur.fullstackProyecto.dtos.ResenaDTO;
 import edu.cesur.fullstackProyecto.entities.Resena;
+import edu.cesur.fullstackProyecto.services.EventoService;
 import edu.cesur.fullstackProyecto.services.ResenaService;
 
 @RestController
@@ -24,10 +25,13 @@ public class ResenaController {
 	
 	@Autowired
 	ResenaService resenaService;
+	@Autowired
+	EventoService eventoService;
 	
 	@PostMapping("/publicar")
-	ResponseEntity<?> crearResena(@RequestBody ResenaDto resenaDto){
+	ResponseEntity<?> crearResena(@RequestBody ResenaDTO resenaDto){
 		long id = resenaService.crearResena(resenaDto);
+		eventoService.actualizarValoracion(resenaDto.getEvento());
 		
 		URI location = ServletUriComponentsBuilder
 				.fromCurrentRequest()

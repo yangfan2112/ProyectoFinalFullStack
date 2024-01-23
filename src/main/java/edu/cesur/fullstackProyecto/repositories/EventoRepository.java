@@ -12,10 +12,10 @@ import edu.cesur.fullstackProyecto.entities.Evento;
 public interface EventoRepository extends JpaRepository<Evento, Long>{	
 
     @Query("SELECT u FROM Evento u WHERE u.id = :id")
-    Evento buscarPorId(Long id);	
+    Evento buscarPorId(Long id);	 
     
-    @Query("SELECT AVG(e.valoracion) FROM Resena e WHERE e.id = :eventoId")
-    Double obtenerMediaValoracionPorId(Long eventoId);
+    @Query("SELECT AVG(e.puntuacion) FROM Resena e WHERE e.id = :eventoId")
+    Float obtenerMediaValoracionPorId(Long eventoId);
 	
     @Query("SELECT u FROM Evento u WHERE u.empresa = :empresa")
     List<Evento> buscarPorEmpresa(String empresa);
@@ -24,7 +24,7 @@ public interface EventoRepository extends JpaRepository<Evento, Long>{
     List<Evento> buscarPorEmail(String email);
     
     @Query("SELECT u FROM Evento u WHERE u.tlf = :tlf")
-    List<Evento> buscarPorTlf(String tlf);
+    List<Evento> buscarPorTlf(String tlf); 
     
     @Query("SELECT u FROM Evento u WHERE u.pais = :pais")
     List<Evento> buscarPorPais(String pais);

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import edu.cesur.fullstackProyecto.dtos.FiltroDTO;
 import edu.cesur.fullstackProyecto.entities.Usuario;
 import edu.cesur.fullstackProyecto.services.UsuarioService;
 
@@ -32,7 +33,7 @@ public class UsuarioController {
 				.fromCurrentRequest()
 				.path("/" + id)
 				.buildAndExpand(id)
-				.toUri();
+				.toUri();	
 		
 		return ResponseEntity.created(location).build();
 		
@@ -53,15 +54,9 @@ public class UsuarioController {
 	}
 	
 	@GetMapping("/filtro")
-	ResponseEntity<?> getUsuariosBy(Usuario usuario){
-		List<Usuario> usuarios = null;
-		try {
-			usuarios = (List<Usuario>) usuarioService.getUsuariosby(campo, valor);
-		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException
-				| SecurityException e) {
-			e.printStackTrace();
-		}
-		return ResponseEntity.ok(usuarios);
+	ResponseEntity<?> getUsuariosBy(@RequestBody List<FiltroDTO> filtroDTO){
+
+		return ResponseEntity.ok(usuarioService.getUsuariosby(filtroDTO));
 		
 	}
 

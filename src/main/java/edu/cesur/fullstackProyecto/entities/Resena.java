@@ -15,7 +15,7 @@ import jakarta.persistence.UniqueConstraint;
 
 
 @Entity
-@Table(name = "Resenas", uniqueConstraints = {@UniqueConstraint(columnNames = {"usuario","evento","puntuacion"})})
+@Table(name = "Resenas")
 public class Resena {
 
 	@Id
@@ -28,13 +28,13 @@ public class Resena {
     @JoinColumn(name = "evento")
     private Evento evento;
     @Column(nullable = false)
-    private byte puntuacion;
+    private Float puntuacion;
     private String comentario;
 	private Date fechares = new Date(System.currentTimeMillis());
 	
 	public Resena(){}
 
-	public Resena(Usuario usuario, Evento evento, byte puntuacion, String comentario) {
+	public Resena(Usuario usuario, Evento evento, Float puntuacion, String comentario) {
 		super();
 		this.usuario = usuario;
 		this.evento = evento;
@@ -66,11 +66,11 @@ public class Resena {
 		this.evento = evento;
 	}
 
-	public byte getPuntuacion() {
+	public Float getPuntuacion() {
 		return puntuacion;
 	}
 
-	public void setPuntuacion(byte puntuacion) {
+	public void setPuntuacion(Float puntuacion) {
 		this.puntuacion = puntuacion;
 	}
 
