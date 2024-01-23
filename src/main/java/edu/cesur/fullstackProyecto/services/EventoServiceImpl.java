@@ -49,21 +49,14 @@ public class EventoServiceImpl implements EventoService {
 	}
 
 	@Override
-	public boolean actualizarValoracion(Long id) {
+	public void actualizarValoracion(Long id) {
 		
 		Evento evento = eventoRepository.findById(id).orElse(null);
-		
-        if (evento != null) {
-        	System.out.println(eventoRepository.obtenerMediaValoracionPorId(id));
-            evento.setValoracion(eventoRepository.obtenerMediaValoracionPorId(id));
 
-            eventoRepository.save(evento);
-            
-            return true;
-        } else {
-        	return false;
-        }
-		
+        evento.setValoracion(eventoRepository.obtenerMediaValoracionPorEvento(evento));
+
+        eventoRepository.save(evento);
+
 	}
 
 }

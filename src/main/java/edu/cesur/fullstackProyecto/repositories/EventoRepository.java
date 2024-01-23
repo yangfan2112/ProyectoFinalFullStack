@@ -14,9 +14,9 @@ public interface EventoRepository extends JpaRepository<Evento, Long>{
     @Query("SELECT u FROM Evento u WHERE u.id = :id")
     Evento buscarPorId(Long id);	 
     
-    @Query("SELECT AVG(e.puntuacion) FROM Resena e WHERE e.id = :eventoId")
-    Float obtenerMediaValoracionPorId(Long eventoId);
-	
+    @Query("SELECT ROUND(AVG(e.valoracion), 1) FROM Resena e WHERE e.evento = :evento")
+    Float obtenerMediaValoracionPorEvento(Evento evento);
+
     @Query("SELECT u FROM Evento u WHERE u.empresa = :empresa")
     List<Evento> buscarPorEmpresa(String empresa);
     

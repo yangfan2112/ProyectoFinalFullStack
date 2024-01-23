@@ -70,7 +70,7 @@ public class ExeptionHandler extends org.springframework.web.servlet.mvc.method.
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> handleInternalServerError(Exception ex) {
-        String errorMessage = "Ocurrió un error interno en el servidor.";
+        String errorMessage = "Ocurrió un error interno en el servidor."+ ex;
 
         return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
     }

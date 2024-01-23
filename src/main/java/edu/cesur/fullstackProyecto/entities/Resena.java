@@ -26,22 +26,28 @@ public class Resena {
     private Usuario usuario;
 	@ManyToOne
     @JoinColumn(name = "evento")
-    private Evento evento;
+    private Evento evento; 
     @Column(nullable = false)
-    private Float puntuacion;
+    private Float valoracion;
     private String comentario;
 	private Date fechares = new Date(System.currentTimeMillis());
 	
 	public Resena(){}
+	
+	
+	
 
-	public Resena(Usuario usuario, Evento evento, Float puntuacion, String comentario) {
+	public Resena(Usuario usuario, Evento evento, Float valoracion, String comentario) {
 		super();
 		this.usuario = usuario;
 		this.evento = evento;
-		this.puntuacion = puntuacion;
+		this.valoracion = valoracion;
 		this.comentario = comentario;
 	}
-	
+
+
+
+
 	public Long getId() {
 		return id;
 	}
@@ -66,12 +72,12 @@ public class Resena {
 		this.evento = evento;
 	}
 
-	public Float getPuntuacion() {
-		return puntuacion;
+	public Float getValoracion() {
+		return valoracion;
 	}
 
-	public void setPuntuacion(Float puntuacion) {
-		this.puntuacion = puntuacion;
+	public void setValoracion(Float valoracion) {
+		this.valoracion = valoracion;
 	}
 
 	public String getComentario() {
@@ -89,6 +95,7 @@ public class Resena {
 	public void setFechares(Date fechares) {
 		this.fechares = fechares;
 	}
+
 
 	
 
