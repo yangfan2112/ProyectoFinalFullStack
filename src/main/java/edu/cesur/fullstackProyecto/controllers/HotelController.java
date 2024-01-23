@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import edu.cesur.fullstackProyecto.entities.Hotel;
-import edu.cesur.fullstackProyecto.entities.Usuario;
 import edu.cesur.fullstackProyecto.services.HotelService;
 
 

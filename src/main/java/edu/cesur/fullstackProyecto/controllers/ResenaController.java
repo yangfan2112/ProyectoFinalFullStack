@@ -1,22 +1,24 @@
 package edu.cesur.fullstackProyecto.controllers;
 
-import java.lang.reflect.InvocationTargetException;
 import java.net.URI;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import edu.cesur.fullstackProyecto.Specifications.Specifications;
 import edu.cesur.fullstackProyecto.dtos.ResenaDTO;
 import edu.cesur.fullstackProyecto.entities.Resena;
 import edu.cesur.fullstackProyecto.services.EventoService;
+import edu.cesur.fullstackProyecto.services.GlobalService;
 import edu.cesur.fullstackProyecto.services.ResenaService;
 
 @RestController
@@ -27,6 +29,8 @@ public class ResenaController {
 	ResenaService resenaService;
 	@Autowired
 	EventoService eventoService;
+	@Autowired
+	GlobalService globalService;
 	
 	@PostMapping("/publicar")
 	ResponseEntity<?> crearResena(@RequestBody ResenaDTO resenaDto){
@@ -57,16 +61,13 @@ public class ResenaController {
 		
 	}
 	
-	@GetMapping("/filtros")
-	ResponseEntity<?> getResenasBy(@RequestParam String campo, @RequestParam Long valor){
-		List<Resena> resenas = null;
-		try {
-			resenas = resenaService.getResenasby(campo, valor);
-		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException
-				| SecurityException e) {
-			e.printStackTrace();
-		}
-		return ResponseEntity.ok(resenas);
+	@GetMapping("/filtro")
+	ResponseEntity<?> getResenasBy(@RequestBody Map<String, String> filtros){
+		
+        Specification<Resena> especificacion = Specifications.filtrar(filtros);
+        List<Resena> resultados = globalService.buscarResena(especificacion);
+        
+		return ResponseEntity.ok(resultados);
 		
 	}
 

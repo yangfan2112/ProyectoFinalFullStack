@@ -27,28 +27,6 @@ public class EventoServiceImpl implements EventoService {
 	}
 
 	@Override
-	public Object getEventosby(String campo, String valor) {
-		
-        switch(campo) {
-        case "id":
-        	return eventoRepository.findById(Long.parseLong(valor));
-        case "empresa":
-        	return eventoRepository.buscarPorEmpresa(valor);
-        case "email":
-        	return eventoRepository.buscarPorEmail(valor);
-        case "tlf":
-        	return eventoRepository.buscarPorTlf(valor);
-        case "pais":
-        	return eventoRepository.buscarPorPais(valor);
-        case "fechanaci":
-        	return eventoRepository.buscarPorFechaini(valor);
-        case "fechafin":
-        	return eventoRepository.buscarPorFechafin(valor);
-        }
-        return null;
-	}
-
-	@Override
 	public void actualizarValoracion(Long id) {
 		
 		Evento evento = eventoRepository.findById(id).orElse(null);

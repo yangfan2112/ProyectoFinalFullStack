@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import edu.cesur.fullstackProyecto.Specifications.Specifications;
 import edu.cesur.fullstackProyecto.entities.Usuario;
+import edu.cesur.fullstackProyecto.services.GlobalService;
 import edu.cesur.fullstackProyecto.services.UsuarioService;
 
 @RestController
@@ -22,6 +25,8 @@ public class UsuarioController {
 	
 	@Autowired
 	UsuarioService usuarioService;
+	@Autowired
+	GlobalService globalService;
 	
 	@PostMapping("/registrar")
 	ResponseEntity<?> crearUsuario(@RequestBody Usuario usuarioEntity){
@@ -53,8 +58,11 @@ public class UsuarioController {
 	
 	@GetMapping("/filtro")
 	ResponseEntity<?> getUsuariosBy(@RequestBody Map<String, String> filtros){
-		
-		return ResponseEntity.ok(usuarioService.getUsuariosby(filtros));
+
+        Specification<Usuario> especificacion = Specifications.filtrar(filtros);
+        List<Usuario> resultados = globalService.buscarUsuario(especificacion);
+        
+		return ResponseEntity.ok(resultados);
 		
 	}
 

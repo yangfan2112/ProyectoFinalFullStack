@@ -24,8 +24,8 @@ public class ResenaServiceImpl implements ResenaService {
 	@Override
 	public long crearResena(ResenaDTO resenaDto) {
 		Resena resena = new Resena(
-				usuarioRepository.buscarPorId((long) resenaDto.getUsuario()),
-				eventoRepository.buscarPorId((long) resenaDto.getEvento()),
+				usuarioRepository.findById((long) resenaDto.getUsuario()).orElse(null),
+				eventoRepository.findById((long) resenaDto.getEvento()).orElse(null),
 				resenaDto.getPuntuacion(),
 				resenaDto.getComentario()
 				);
@@ -37,18 +37,6 @@ public class ResenaServiceImpl implements ResenaService {
 	@Override
 	public List<Resena> getResenas() {
 		return resenaRepository.findAll();
-	}
-
-	@Override
-	public List<Resena> getResenasby(String campo, Long valor) {
-		
-        switch(campo) {
-        case "usuario":
-        	return resenaRepository.buscarPorUsuario(valor);
-        case "evento":
-        	return resenaRepository.buscarPorEvento(valor);
-        }
-        return null;
 	}
 
 }
