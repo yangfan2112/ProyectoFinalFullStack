@@ -8,5 +8,6 @@ public interface HotelService {
 
 	long crearHotel(Hotel hotelEntity);
 	List<Hotel> getHoteles();
+	void actualizarValoracion(Long id);
 	
 }

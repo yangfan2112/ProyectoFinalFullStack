@@ -4,20 +4,23 @@ public class ResenaDTO {
 
     private Long usuario;
     private Long evento;
+    private Long hotel;
     private Float puntuacion;
     private String comentario;
     
     
     
+	
 	@Override
 	public String toString() {
-		return "ResenaDTO [usuario=" + usuario + ", evento=" + evento + ", puntuacion=" + puntuacion + ", comentario="
-				+ comentario + "]";
+		return "ResenaDTO [usuario=" + usuario + ", evento=" + evento + ", hotel=" + hotel + ", puntuacion="
+				+ puntuacion + ", comentario=" + comentario + "]";
 	}
-	public ResenaDTO(Long usuario, Long evento, Float puntuacion, String comentario) {
+	public ResenaDTO(Long usuario, Long evento,Long hotel, Float puntuacion, String comentario) {
 		super();
 		this.usuario = usuario;
 		this.evento = evento;
+		this.hotel = hotel;
 		this.puntuacion = puntuacion;
 		this.comentario = comentario;
 	}
@@ -32,6 +35,12 @@ public class ResenaDTO {
 	}
 	public void setEvento(Long evento) {
 		this.evento = evento;
+	}
+	public Long getHotel() {
+		return hotel;
+	}
+	public void setHotel(Long hotel) {
+		this.hotel = hotel;
 	}
 	public Float getPuntuacion() {
 		return puntuacion;

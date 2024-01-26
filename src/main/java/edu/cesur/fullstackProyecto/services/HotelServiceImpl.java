@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import edu.cesur.fullstackProyecto.entities.Hotel;
 import edu.cesur.fullstackProyecto.repositories.HotelRespository;
 
@@ -23,6 +24,17 @@ public class HotelServiceImpl implements HotelService{
 	@Override
 	public List<Hotel> getHoteles() {
 		return hotelRepository.findAll();
+	}
+	
+	@Override
+	public void actualizarValoracion(Long id) {
+		
+		Hotel hotel = hotelRepository.findById(id).orElse(null);
+
+        hotel.setValoracion(hotelRepository.obtenerMediaValoracionPorHotel(hotel));
+
+        hotelRepository.save(hotel);
+
 	}
 
 }
