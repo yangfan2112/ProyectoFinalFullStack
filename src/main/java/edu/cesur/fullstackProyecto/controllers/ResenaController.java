@@ -19,6 +19,7 @@ import edu.cesur.fullstackProyecto.dtos.ResenaDTO;
 import edu.cesur.fullstackProyecto.entities.Resena;
 import edu.cesur.fullstackProyecto.services.EventoService;
 import edu.cesur.fullstackProyecto.services.GlobalService;
+import edu.cesur.fullstackProyecto.services.HotelService;
 import edu.cesur.fullstackProyecto.services.ResenaService;
 
 @RestController

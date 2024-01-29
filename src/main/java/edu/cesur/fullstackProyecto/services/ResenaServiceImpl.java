@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import edu.cesur.fullstackProyecto.dtos.ResenaDTO;
 import edu.cesur.fullstackProyecto.entities.Resena;
 import edu.cesur.fullstackProyecto.repositories.EventoRepository;
+import edu.cesur.fullstackProyecto.repositories.HotelRespository;
 import edu.cesur.fullstackProyecto.repositories.ResenaRepository;
 import edu.cesur.fullstackProyecto.repositories.UsuarioRepository;
 
@@ -20,6 +21,7 @@ public class ResenaServiceImpl implements ResenaService {
 	UsuarioRepository usuarioRepository;
 	@Autowired
 	EventoRepository eventoRepository;
+	
 
 	@Override
 	public long crearResena(ResenaDTO resenaDto) {

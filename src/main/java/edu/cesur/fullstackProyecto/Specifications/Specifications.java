@@ -51,11 +51,20 @@ public class Specifications {
                     case "usuario":
                     	predicates.add(criteriaBuilder.equal(root.get("usuario").get("id"), Long.parseLong(valor)));
                         break;
+                    case "hotel":
+                    	predicates.add(criteriaBuilder.equal(root.get("hotel").get("id"), Long.parseLong(valor)));
+                        break;
                     case "empresa":
                         predicates.add(criteriaBuilder.equal(root.get("empresa"), valor));
                         break;
                     case "pais":
                         predicates.add(criteriaBuilder.equal(root.get("pais"), valor));
+                        break;
+                    case "servicios":
+                        predicates.add(criteriaBuilder.equal(root.get("servicios"), valor));
+                        break;
+                    case "tipoHab":
+                        predicates.add(criteriaBuilder.equal(root.get("tipoHab"), valor));
                         break;
                 }
             }
