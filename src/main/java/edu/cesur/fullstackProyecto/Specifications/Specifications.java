@@ -54,6 +54,9 @@ public class Specifications {
                     case "hotel":
                     	predicates.add(criteriaBuilder.equal(root.get("hotel").get("id"), Long.parseLong(valor)));
                         break;
+                    case "restaurante":
+                    	predicates.add(criteriaBuilder.equal(root.get("restaurante").get("id"), Long.parseLong(valor)));
+                        break;
                     case "empresa":
                         predicates.add(criteriaBuilder.equal(root.get("empresa"), valor));
                         break;
@@ -65,6 +68,15 @@ public class Specifications {
                         break;
                     case "tipoHab":
                         predicates.add(criteriaBuilder.equal(root.get("tipoHab"), valor));
+                        break;
+                    case "tipoCocina":
+                    	predicates.add(criteriaBuilder.equal(root.get("tipoCocina"), valor));
+                        break;
+                    case "horarioApertura":
+                    	predicates.add(criteriaBuilder.equal(root.get("horarioApertura"), valor));
+                        break;
+                    case "horarioCierre":
+                    	predicates.add(criteriaBuilder.equal(root.get("horarioCierre"), valor));
                         break;
                 }
             }

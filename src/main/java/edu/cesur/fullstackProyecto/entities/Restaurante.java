@@ -10,53 +10,49 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "hoteles")
-public class Hotel {
+@Table(name = "restaurantes")
+public class Restaurante {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
-    @Column(nullable = false)
+	@Column(nullable = false)
 	private String nombre;
-    @Column(nullable = false, unique=true)
+	@Column(nullable = false, unique = true)
 	private String email;
 	private Float valoracion;
-	@Column(nullable = false, unique=true)
+	@Column(nullable = false)
 	private String ubicacion;
 	@Column(nullable = false)
 	private String descripcion;
 	@Column(nullable = false)
-	private String tipoHab;
-    @Column(nullable = false)
-	private Date servicios;
-    @Column(nullable = false)
-	private String pais;
-    @Column(nullable = false)
-	private Date fechaini;
-    private Date fechafin;
+	private String tipoCocina;
+	@Column(nullable = false)
+	private Date horarioApertura;
+	@Column(nullable = false)
+	private Date horarioCierre;
+	@Column(nullable = false)
 	private Date fechareg = new Date(System.currentTimeMillis());
-    @Column(nullable = false, unique=true)
+	@Column(nullable = false, unique = true)
 	private String tlf;
-    @Column(unique = true)
-    private String url;
-    
-	public Hotel() {
+	@Column(unique = true)
+	private String url;
+	
+	public Restaurante() {
 		
 	}
-	
-	public Hotel(Long id, String nombre, String email, String ubicacion, String descripcion, String tipoHab,
-			Date servicios, String pais, Date fechaini, Date fechafin, Date fechareg, String tlf) {
+
+	public Restaurante(Long id, String nombre, String email, String ubicacion, String descripcion,
+			String tipoCocina, Date horarioApertura, Date horarioCierre, Date fechareg, String tlf) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.email = email;
 		this.ubicacion = ubicacion;
 		this.descripcion = descripcion;
-		this.tipoHab = tipoHab;
-		this.servicios = servicios;
-		this.pais = pais;
-		this.fechaini = fechaini;
-		this.fechafin = fechafin;
+		this.tipoCocina = tipoCocina;
+		this.horarioApertura = horarioApertura;
+		this.horarioCierre = horarioCierre;
 		this.fechareg = fechareg;
 		this.tlf = tlf;
 	}
@@ -109,44 +105,28 @@ public class Hotel {
 		this.descripcion = descripcion;
 	}
 
-	public String getTipoHab() {
-		return tipoHab;
+	public String getTipoCocina() {
+		return tipoCocina;
 	}
 
-	public void setTipoHab(String tipoHab) {
-		this.tipoHab = tipoHab;
+	public void setTipoCocina(String tipoCocina) {
+		this.tipoCocina = tipoCocina;
 	}
 
-	public Date getServicios() {
-		return servicios;
+	public Date getHorarioApertura() {
+		return horarioApertura;
 	}
 
-	public void setServicios(Date servicios) {
-		this.servicios = servicios;
+	public void setHorarioApertura(Date horarioApertura) {
+		this.horarioApertura = horarioApertura;
 	}
 
-	public String getPais() {
-		return pais;
+	public Date getHorarioCierre() {
+		return horarioCierre;
 	}
 
-	public void setPais(String pais) {
-		this.pais = pais;
-	}
-
-	public Date getFechaini() {
-		return fechaini;
-	}
-
-	public void setFechaini(Date fechaini) {
-		this.fechaini = fechaini;
-	}
-
-	public Date getFechafin() {
-		return fechafin;
-	}
-
-	public void setFechafin(Date fechafin) {
-		this.fechafin = fechafin;
+	public void setHorarioCierre(Date horarioCierre) {
+		this.horarioCierre = horarioCierre;
 	}
 
 	public Date getFechareg() {
@@ -174,7 +154,5 @@ public class Hotel {
 	}
 
 	
-    
-    
-    
+	
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import edu.cesur.fullstackProyecto.entities.Evento;
 import edu.cesur.fullstackProyecto.entities.Hotel;
 import edu.cesur.fullstackProyecto.entities.Resena;
+import edu.cesur.fullstackProyecto.entities.Restaurante;
 import edu.cesur.fullstackProyecto.entities.Usuario;
 import edu.cesur.fullstackProyecto.repositories.GlobalRepository;
 
@@ -23,6 +24,8 @@ public class GlobalServiceImpl implements GlobalService {
     GlobalRepository<Resena> globalResenaRepository;
     @Autowired
     GlobalRepository<Hotel> globalHotelRepository;
+    @Autowired
+    GlobalRepository<Restaurante> globalRestauranteRepository;
 
     public List<Usuario> buscarUsuario(Specification<Usuario> specification) {
         return globalUsuarioRepository.findAll(specification);
@@ -38,5 +41,9 @@ public class GlobalServiceImpl implements GlobalService {
 
 	public List<Hotel> buscarHotel(Specification<Hotel> specification) {
 		return globalHotelRepository.findAll(specification);
+	}
+	
+	public List<Restaurante> buscarRestaurante(Specification<Restaurante> specification) {
+		return globalRestauranteRepository.findAll(specification);
 	}
 }
