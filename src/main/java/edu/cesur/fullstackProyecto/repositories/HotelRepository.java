@@ -6,10 +6,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import edu.cesur.fullstackProyecto.entities.Hotel;
+import edu.cesur.fullstackProyecto.entities.Restaurante;
 
 @Repository
-public interface HotelRespository extends JpaRepository<Hotel, Long>, GlobalRepository<Hotel>{
+public interface HotelRepository extends JpaRepository<Hotel, Long>, GlobalRepository<Hotel>{
 
-	@Query("SELECT ROUND(AVG(h.valoracion), 1) FROM Resena h WHERE h.hotel = :hotel")
-    Float obtenerMediaValoracionPorHotel(Hotel hotel);
 }

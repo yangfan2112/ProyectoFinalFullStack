@@ -9,5 +9,4 @@ public interface RestauranteService {
 
 	long crearRestaurante(Restaurante restauranteEntity);
 	List<Restaurante> getRestaurantes();
-	void actualizarValoracion(Long id);
 }

@@ -28,7 +28,7 @@ public class RestauranteController {
 	@Autowired
 	GlobalService globalService;
 	
-	@PostMapping("/registrarRestaurante")
+	@PostMapping("/registrar")
 	ResponseEntity<?> crearRestaurante(@RequestBody Restaurante restauranteEntity){
 		long id = restauranteService.crearRestaurante(restauranteEntity);
 		

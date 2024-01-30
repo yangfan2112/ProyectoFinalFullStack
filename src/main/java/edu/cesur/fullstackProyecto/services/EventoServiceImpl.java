@@ -31,7 +31,7 @@ public class EventoServiceImpl implements EventoService {
 		
 		Evento evento = eventoRepository.findById(id).orElse(null);
 
-        evento.setValoracion(eventoRepository.obtenerMediaValoracionPorEvento(evento));
+//        evento.setValoracion(eventoRepository.obtenerMediaValoracionPorEvento(evento));
 
         eventoRepository.save(evento);
 

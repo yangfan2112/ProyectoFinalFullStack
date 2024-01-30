@@ -11,6 +11,4 @@ import edu.cesur.fullstackProyecto.entities.Restaurante;
 @Repository
 public interface RestauranteRepository extends JpaRepository<Restaurante, Long>, GlobalRepository<Restaurante>{
 
-	@Query("SELECT ROUND(AVG(r.valoracion), 1) FROM Resena r WHERE r.restaurante = :restaurante")
-    Float obtenerMediaValoracionPorRestaurante(Restaurante restaurante);
 }

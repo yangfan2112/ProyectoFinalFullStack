@@ -1,6 +1,7 @@
 package edu.cesur.fullstackProyecto.entities;
 
 import java.sql.Date;
+import java.sql.Time;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,7 +12,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "restaurantes")
-public class Restaurante {
+public class Restaurante extends Negocio{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -28,10 +29,9 @@ public class Restaurante {
 	@Column(nullable = false)
 	private String tipoCocina;
 	@Column(nullable = false)
-	private Date horarioApertura;
+	private Time horarioApertura;
 	@Column(nullable = false)
-	private Date horarioCierre;
-	@Column(nullable = false)
+	private Time horarioCierre;
 	private Date fechareg = new Date(System.currentTimeMillis());
 	@Column(nullable = false, unique = true)
 	private String tlf;
@@ -43,7 +43,7 @@ public class Restaurante {
 	}
 
 	public Restaurante(Long id, String nombre, String email, String ubicacion, String descripcion,
-			String tipoCocina, Date horarioApertura, Date horarioCierre, Date fechareg, String tlf) {
+			String tipoCocina, Time horarioApertura, Time horarioCierre, Date fechareg, String tlf) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -113,19 +113,19 @@ public class Restaurante {
 		this.tipoCocina = tipoCocina;
 	}
 
-	public Date getHorarioApertura() {
+	public Time getHorarioApertura() {
 		return horarioApertura;
 	}
 
-	public void setHorarioApertura(Date horarioApertura) {
+	public void setHorarioApertura(Time horarioApertura) {
 		this.horarioApertura = horarioApertura;
 	}
 
-	public Date getHorarioCierre() {
+	public Time getHorarioCierre() {
 		return horarioCierre;
 	}
 
-	public void setHorarioCierre(Date horarioCierre) {
+	public void setHorarioCierre(Time horarioCierre) {
 		this.horarioCierre = horarioCierre;
 	}
 

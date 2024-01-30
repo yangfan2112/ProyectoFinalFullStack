@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "hoteles")
-public class Hotel {
+public class Hotel extends Negocio{
 
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -43,13 +43,12 @@ public class Hotel {
 	public Hotel() {
 		
 	}
-	
-	public Hotel(Long id, String nombre, String email, String ubicacion, String descripcion, String tipoHab,
-			Date servicios, String pais, Date fechaini, Date fechafin, Date fechareg, String tlf) {
+	public Hotel(String nombre, String email, Float valoracion, String ubicacion, String descripcion, String tipoHab,
+			Date servicios, String pais, Date fechaini, Date fechafin, String tlf) {
 		super();
-		this.id = id;
 		this.nombre = nombre;
 		this.email = email;
+		this.valoracion = valoracion;
 		this.ubicacion = ubicacion;
 		this.descripcion = descripcion;
 		this.tipoHab = tipoHab;
@@ -57,7 +56,6 @@ public class Hotel {
 		this.pais = pais;
 		this.fechaini = fechaini;
 		this.fechafin = fechafin;
-		this.fechareg = fechareg;
 		this.tlf = tlf;
 	}
 
@@ -76,6 +74,7 @@ public class Hotel {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
 
 	public String getEmail() {
 		return email;

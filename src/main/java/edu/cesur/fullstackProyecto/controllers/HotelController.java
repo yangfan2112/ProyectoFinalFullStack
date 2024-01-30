@@ -28,7 +28,7 @@ public class HotelController {
 	@Autowired
 	GlobalService globalService;
 	
-	@PostMapping("/registrarHotel")
+	@PostMapping("/registrar")
 	ResponseEntity<?> crearHotel(@RequestBody Hotel hotelEntity){
 		long id = hotelService.crearHotel(hotelEntity);
 		

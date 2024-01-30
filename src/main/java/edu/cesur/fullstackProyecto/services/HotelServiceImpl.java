@@ -7,13 +7,13 @@ import org.springframework.stereotype.Service;
 
 
 import edu.cesur.fullstackProyecto.entities.Hotel;
-import edu.cesur.fullstackProyecto.repositories.HotelRespository;
+import edu.cesur.fullstackProyecto.repositories.HotelRepository;
 
 @Service
 public class HotelServiceImpl implements HotelService{
 
 	@Autowired
-	HotelRespository hotelRepository;
+	HotelRepository hotelRepository;
 	
 	@Override
 	public long crearHotel(Hotel hotelEntity) {
@@ -26,15 +26,5 @@ public class HotelServiceImpl implements HotelService{
 		return hotelRepository.findAll();
 	}
 	
-	@Override
-	public void actualizarValoracion(Long id) {
-		
-		Hotel hotel = hotelRepository.findById(id).orElse(null);
-
-        hotel.setValoracion(hotelRepository.obtenerMediaValoracionPorHotel(hotel));
-
-        hotelRepository.save(hotel);
-
-	}
 
 }
