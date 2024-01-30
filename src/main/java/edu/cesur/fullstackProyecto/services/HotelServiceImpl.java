@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.cesur.fullstackProyecto.entities.Hotel;
-import edu.cesur.fullstackProyecto.repositories.HotelRespository;
+import edu.cesur.fullstackProyecto.repositories.HotelRepository;
 
 @Service
 public class HotelServiceImpl implements HotelService{
 
 	@Autowired
-	HotelRespository hotelRepository;
+	HotelRepository hotelRepository;
 	
 	@Override
 	public long crearHotel(Hotel hotelEntity) {

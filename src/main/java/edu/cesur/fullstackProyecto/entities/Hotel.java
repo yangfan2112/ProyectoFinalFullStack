@@ -11,15 +11,14 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "hoteles")
-public class Hotel {
+public class Hotel extends Negocio{
 
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
     @Column(nullable = false)
 	private String nombre;
-    @Column(nullable = false)
-	private String valoracion;
+    private Float valoracion;
 	@Column(nullable = false, unique=true)
 	private String ubicacion;
 	@Column(nullable = false)
@@ -36,7 +35,7 @@ public class Hotel {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Hotel(Long id, String nombre, String valoracion, String ubicacion, String descripcion, String tipoHab,
+	public Hotel(Long id, String nombre, Float valoracion, String ubicacion, String descripcion, String tipoHab,
 			Date servicios, Date fechareg, String tlf) {
 		super();
 		this.id = id;
@@ -61,10 +60,10 @@ public class Hotel {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getValoracion() {
+	public Float getValoracion() {
 		return valoracion;
 	}
-	public void setValoracion(String valoracion) {
+	public void setValoracion(Float valoracion) {
 		this.valoracion = valoracion;
 	}
 	public String getUbicacion() {

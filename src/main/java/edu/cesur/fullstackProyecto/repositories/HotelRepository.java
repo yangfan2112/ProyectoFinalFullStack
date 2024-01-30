@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import edu.cesur.fullstackProyecto.entities.Hotel;
 
 @Repository
-public interface HotelRespository extends JpaRepository<Hotel, Long>, GlobalRepository<Hotel>{
+public interface HotelRepository extends JpaRepository<Hotel, Long>, GlobalRepository<Hotel>{
 
 }

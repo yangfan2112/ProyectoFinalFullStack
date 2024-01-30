@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "eventos")
-public class Evento{
+public class Evento extends Negocio{
 
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

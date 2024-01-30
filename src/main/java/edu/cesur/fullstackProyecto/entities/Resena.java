@@ -23,8 +23,8 @@ public class Resena {
     @JoinColumn(name = "usuario")
     private Usuario usuario;
 	@ManyToOne
-    @JoinColumn(name = "evento")
-    private Evento evento; 
+    @JoinColumn(name = "negocio")
+    private Negocio negocio; 
     @Column(nullable = false)
     private Float valoracion;
     private String comentario;
@@ -35,10 +35,10 @@ public class Resena {
 	
 	
 
-	public Resena(Usuario usuario, Evento evento, Float valoracion, String comentario) {
+	public Resena(Usuario usuario, Negocio negocio, Float valoracion, String comentario) {
 		super();
 		this.usuario = usuario;
-		this.evento = evento;
+		this.negocio = negocio;
 		this.valoracion = valoracion;
 		this.comentario = comentario;
 	}
@@ -62,12 +62,12 @@ public class Resena {
 		this.usuario = usuario;
 	}
 
-	public Evento getEvento() {
-		return evento;
+	public Negocio getNegocio() {
+		return negocio;
 	}
 
-	public void setEvento(Evento evento) {
-		this.evento = evento;
+	public void setNegocio(Evento negocio) {
+		this.negocio = negocio;
 	}
 
 	public Float getValoracion() {

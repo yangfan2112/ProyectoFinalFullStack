@@ -19,6 +19,7 @@ import edu.cesur.fullstackProyecto.dtos.ResenaDTO;
 import edu.cesur.fullstackProyecto.entities.Resena;
 import edu.cesur.fullstackProyecto.services.EventoService;
 import edu.cesur.fullstackProyecto.services.GlobalService;
+import edu.cesur.fullstackProyecto.services.NegocioService;
 import edu.cesur.fullstackProyecto.services.ResenaService;
 
 @RestController
@@ -31,17 +32,19 @@ public class ResenaController {
 	EventoService eventoService;
 	@Autowired
 	GlobalService globalService;
+	@Autowired
+	NegocioService negocioService;
 	
 	@PostMapping("/publicar")
 	ResponseEntity<?> crearResena(@RequestBody ResenaDTO resenaDto){
 		long id = resenaService.crearResena(resenaDto);
-		eventoService.actualizarValoracion(resenaDto.getEvento());
-		
+		negocioService.actualizarValoracion(resenaDto.getNegocio());
 		URI location = ServletUriComponentsBuilder
 				.fromCurrentRequest()
 				.path("/" + id)
 				.buildAndExpand(id)
 				.toUri();
+		
 		
 		return ResponseEntity.created(location).build();
 		
