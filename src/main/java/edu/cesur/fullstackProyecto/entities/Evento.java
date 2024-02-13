@@ -32,6 +32,8 @@ public class Evento extends Negocio{
 	private String ubicacion;
     @Column(nullable = false)
 	private String pais;
+    @Column(nullable = false)
+    private String contraseña;
 	private Float valoracion;
     @Column(unique = true)
     private String url;
@@ -40,8 +42,11 @@ public class Evento extends Negocio{
 	public Evento(){}
 
 
+	
+
+
 	public Evento(Long id, String nombre, String empresa, String email, String tlf, Date fechaini, Date fechafin,
-			Date fechareg, String ubicacion, String pais) {
+			Date fechareg, String ubicacion, String pais, String contraseña, Float valoracion, String url) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -53,7 +58,13 @@ public class Evento extends Negocio{
 		this.fechareg = fechareg;
 		this.ubicacion = ubicacion;
 		this.pais = pais;
+		this.contraseña = contraseña;
+		this.valoracion = valoracion;
+		this.url = url;
 	}
+
+
+
 
 
 	public Long getId() {
@@ -173,6 +184,22 @@ public class Evento extends Negocio{
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+
+
+
+
+	public String getContraseña() {
+		return contraseña;
+	}
+
+
+
+
+
+	public void setContraseña(String contraseña) {
+		this.contraseña = contraseña;
 	}
 
 	
