@@ -4,5 +4,5 @@ import edu.cesur.fullstackProyecto.entities.Usuario;
 
 public interface LoginService {
 
-	Usuario login(String email, String contraseña);
+	Usuario login(String email, String password);
 }

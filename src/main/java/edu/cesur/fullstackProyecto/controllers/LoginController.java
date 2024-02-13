@@ -19,8 +19,8 @@ public class LoginController {
     private LoginService loginService;
 
     @PostMapping("/acceder")
-    public ResponseEntity<?> login(@RequestParam String email, @RequestParam String contraseña) {
-        Usuario usuario = loginService.login(email, contraseña);
+    public ResponseEntity<?> login(@RequestParam String email, @RequestParam String password) {
+        Usuario usuario = loginService.login(email, password);
         if (usuario != null) {
             return ResponseEntity.ok("Inicio de sesión exitoso");
         } else {

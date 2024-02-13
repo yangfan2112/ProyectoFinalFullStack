@@ -10,6 +10,6 @@ import edu.cesur.fullstackProyecto.entities.Usuario;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>, GlobalRepository<Usuario>{	
-	@Query("SELECT u FROM Usuario u WHERE u.email = :email AND u.contraseña = :contraseña")
-    Usuario findByEmailAndContraseña(@Param("email") String email, @Param("contraseña") String contraseña);
+	@Query("SELECT u FROM Usuario u WHERE u.email = :email AND u.password = :password")
+    Usuario findByEmailAndContraseña(@Param("email") String email, @Param("password") String password);
 }

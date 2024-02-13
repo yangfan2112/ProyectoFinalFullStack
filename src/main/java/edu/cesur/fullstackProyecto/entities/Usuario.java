@@ -34,14 +34,19 @@ public class Usuario {
 	private String idioma;
     @Column(nullable = false)
 	private String nacionalidad;
+    @Column(nullable = false)
+    private String password;
 
 	
 	
 	public Usuario(){}
 
 
+	
+
+
 	public Usuario(Long id, String nombre, String apellidos, String documentacion, String email, String tlf,
-			Date fechanac, Date fechareg, String idioma, String nacionalidad) {
+			Date fechanac, Date fechareg, String idioma, String nacionalidad, String password) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -53,7 +58,11 @@ public class Usuario {
 		this.fechareg = fechareg;
 		this.idioma = idioma;
 		this.nacionalidad = nacionalidad;
+		this.password = password;
 	}
+
+
+
 
 
 	public Long getId() {
@@ -155,5 +164,22 @@ public class Usuario {
 		this.nacionalidad = nacionalidad;
 	}
 
+
+
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	
 	
 }
