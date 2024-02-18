@@ -2,7 +2,8 @@ package edu.cesur.fullstackProyecto.services;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;	
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import edu.cesur.fullstackProyecto.entities.Evento;
@@ -22,8 +23,8 @@ public class EventoServiceImpl implements EventoService {
 	}
 
 	@Override
-	public List<Evento> getEventos() {
-		return eventoRepository.findAll();
+	public List<Evento> getEventosOrderedByValoracionDesc() {
+		return eventoRepository.findAll(Sort.by(Sort.Direction.DESC, "valoracion"));
 	}
 
 	@Override

@@ -46,7 +46,7 @@ public class EventoController {
 	@GetMapping
 	ResponseEntity<?> getEventos(){
 		
-		List<Evento> eventos = eventoService.getEventos();
+		List<Evento> eventos = eventoService.getEventosOrderedByValoracionDesc();
 		if(eventos.isEmpty()) {
 			return ResponseEntity.noContent().build();			
 		}
