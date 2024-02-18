@@ -42,9 +42,9 @@ public class RestauranteController {
 	}
 	
 	@GetMapping
-	ResponseEntity<?> getRestauranteS(){
+	ResponseEntity<?> getRestaurantes(){
 		
-		List<Restaurante> restaurantes = restauranteService.getRestaurantes();
+		List<Restaurante> restaurantes = restauranteService.getRestaurantesOrderedByValoracionDesc();
 		if(restaurantes.isEmpty()) {
 			return ResponseEntity.noContent().build();			
 		}

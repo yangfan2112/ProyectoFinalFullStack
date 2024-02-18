@@ -8,5 +8,5 @@ import edu.cesur.fullstackProyecto.entities.Restaurante;
 public interface RestauranteService {
 
 	long crearRestaurante(Restaurante restauranteEntity);
-	List<Restaurante> getRestaurantes();
+	List<Restaurante> getRestaurantesOrderedByValoracionDesc();
 }

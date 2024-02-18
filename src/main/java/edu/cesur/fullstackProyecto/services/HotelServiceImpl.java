@@ -3,6 +3,7 @@ package edu.cesur.fullstackProyecto.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 
@@ -22,8 +23,8 @@ public class HotelServiceImpl implements HotelService{
 	}
 
 	@Override
-	public List<Hotel> getHoteles() {
-		return hotelRepository.findAll();
+	public List<Hotel> getHotelesOrderedByValoracionDesc() {
+		return hotelRepository.findAll(Sort.by(Sort.Direction.DESC, "valoracion"));
 	}
 	
 

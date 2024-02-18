@@ -44,7 +44,7 @@ public class HotelController {
 	@GetMapping
 	ResponseEntity<?> getHoteles(){
 		
-		List<Hotel> hoteles = hotelService.getHoteles();
+		List<Hotel> hoteles = hotelService.getHotelesOrderedByValoracionDesc();
 		if(hoteles.isEmpty()) {
 			return ResponseEntity.noContent().build();			
 		}

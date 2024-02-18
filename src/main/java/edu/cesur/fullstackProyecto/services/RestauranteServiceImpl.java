@@ -3,6 +3,7 @@ package edu.cesur.fullstackProyecto.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import edu.cesur.fullstackProyecto.entities.Restaurante;
@@ -21,8 +22,8 @@ public class RestauranteServiceImpl implements RestauranteService {
 	}
 
 	@Override
-	public List<Restaurante> getRestaurantes() {
-		return restauranteRepository.findAll();
+	public List<Restaurante> getRestaurantesOrderedByValoracionDesc() {
+		return restauranteRepository.findAll(Sort.by(Sort.Direction.DESC, "valoracion"));
 	}
 
 }

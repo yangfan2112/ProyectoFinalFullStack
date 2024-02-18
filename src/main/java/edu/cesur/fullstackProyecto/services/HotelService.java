@@ -7,6 +7,6 @@ import edu.cesur.fullstackProyecto.entities.Hotel;
 public interface HotelService {
 
 	long crearHotel(Hotel hotelEntity);
-	List<Hotel> getHoteles();
+	List<Hotel> getHotelesOrderedByValoracionDesc();
 	
 }
